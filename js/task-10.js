@@ -47,17 +47,11 @@ function createBoxes(amount) {
 }
 
 function destroyBoxes() {
-  while (boxesEl.firstChild) {
-    boxesEl.removeChild(boxesEl.firstChild);
-  }
-  formOfControls.firstElementChild.value = "";
+  boxesEl.innerHTML = "";
 
-  /* Значення очищується, але залишається в пам'яті і спрацьовує
-   при повторному натисканні кнопки Create. Якби розмітка буа реалізована
-   через тег <form> можна було б використати reset().
-   В нашому випадку простіше взагалі перезавантажити сторінку 
-   і все відчиститься document.location.reload();
-*/
+  // while (boxesEl.firstChild) {
+  //   boxesEl.removeChild(boxesEl.firstChild);
+  // }
 }
 
 btnDestroy.addEventListener("click", destroyBoxes);
