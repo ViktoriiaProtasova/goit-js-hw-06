@@ -50,8 +50,7 @@ Elements: 3
 
 Category: Technologies
 Elements: 5
-
-
+<br>
 Завдання 2
 HTML містить порожній список ul#ingredients.
 
