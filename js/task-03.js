@@ -18,7 +18,7 @@ const list = document.querySelector(".gallery");
 const markup = images
   .map(
     (img) =>
-      `<li><img src="${img.url}" alt="${img.alt}" style="display: block; border-radius: 5px" width="490" height="360"></li>`
+      `<li><img src="${img.url}" alt="${img.alt}" width="390" height="260" style="display: block; border-radius: 5px; margin-right: 13px;"></li>`
   )
   .join("");
 
@@ -29,10 +29,5 @@ list.style.justifyContent = "center";
 list.style.marginRight = "auto";
 list.style.marginLeft = "auto";
 list.style.paddingLeft = "0";
-
-const listItem = document.querySelectorAll(".gallery li");
-
-listItem.forEach((el) => (el.style.marginRight = "13px"));
-listItem.forEach((el) => (el.style.listStyle = "none"));
-
+list.style.listStyle = "none";
 list.lastElementChild.style.marginRight = "0";
