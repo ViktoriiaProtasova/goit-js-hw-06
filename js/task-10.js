@@ -1,29 +1,33 @@
+const inputEl = document.querySelector('input[type="number"]');
+const boxesEl = document.querySelector("#boxes");
+const formOfControls = document.querySelector("#controls");
+const btnCreate = document.querySelector("button[data-create]");
+const btnDestroy = document.querySelector("button[data-destroy]");
+const min = inputEl.getAttribute("min");
+const max = inputEl.getAttribute("max");
+const step = inputEl.getAttribute("step");
+let amount = 0;
+
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215)
     .toString(16)
     .padStart(6, 0)}`;
 }
 
-const boxesEl = document.querySelector("#boxes");
-const formOfControls = document.querySelector("#controls");
-const btnCreate = document.querySelector("button[data-create]");
-const btnDestroy = document.querySelector("button[data-destroy]");
-
-let amount = 0;
-
 const handleInputAmount = () => {
-  amount = Number(formOfControls.firstElementChild.value);
+  amount = Number(inputEl.value);
 };
-
-formOfControls.firstElementChild.addEventListener("input", handleInputAmount);
 
 const onBtnCreateClick = () => {
   createBoxes(amount);
 };
 
-btnCreate.addEventListener("click", onBtnCreateClick);
-
 function createBoxes(amount) {
+  if (amount < min || amount > max) {
+    alert("Введіть коректне значення");
+    return;
+  }
+
   let counter = 0;
   let width = 30;
   let height = 30;
@@ -38,20 +42,20 @@ function createBoxes(amount) {
     container.style.backgroundColor = getRandomHexColor();
 
     boxesContainers.push(container);
-    counter += 1;
+    counter += Number(step);
     width += 10;
     height += 10;
   }
 
-  boxesEl.prepend(...boxesContainers);
+  boxesEl.append(...boxesContainers);
 }
 
 function destroyBoxes() {
   boxesEl.innerHTML = "";
-
-  // while (boxesEl.firstChild) {
-  //   boxesEl.removeChild(boxesEl.firstChild);
-  // }
 }
+
+inputEl.addEventListener("input", handleInputAmount);
+
+btnCreate.addEventListener("click", onBtnCreateClick);
 
 btnDestroy.addEventListener("click", destroyBoxes);
