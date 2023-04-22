@@ -10,8 +10,6 @@ const onDecrementButtonClick = () => {
   value.textContent = counterValue;
 };
 
-decrementButton.addEventListener("click", onDecrementButtonClick);
-
 const incrementButton = document.querySelector(
   'button[data-action="increment"]'
 );
@@ -21,4 +19,5 @@ const onIncrementButtonClick = () => {
   value.textContent = counterValue;
 };
 
+decrementButton.addEventListener("click", onDecrementButtonClick);
 incrementButton.addEventListener("click", onIncrementButtonClick);
